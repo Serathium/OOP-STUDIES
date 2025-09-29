@@ -51,8 +51,8 @@ Java allows the creation of multiple methods with the same name, as long as the 
 
 - **public**: The attribute or method may be accessed by any other class.  
 - **private**: The attribute or method may only be accessed by methods from the same class.  
-- **protected**: Works as **private** except that the child classes (or derived) will also have access to the attribute or method.  
-- **package**(default): When attributes or methods are declared without access modifiers, they are called **package**. This means they can be accessed by any class in the same package.  
+- **protected**: Protected is accessible to the same class, subclasses (anywhere), and all classes in the same package.  Grants access to classes in the same package and to all sub-classes, even if those sub-classes are located in a different package.
+- **package**(default): When attributes or methods are declared without access modifiers, they are called **package**. This means they can be accessed by any class in the same package. Grants access only to classes in the same package.  
 
 ### Methods and Attibutes  
 
