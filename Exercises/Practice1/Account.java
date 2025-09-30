@@ -1,9 +1,24 @@
 public class Account {
+    private static int amountOfAccounts;
     private int accountNumber;
     private String ownerName;
     private double balance;
     private double limit;
 
+    // Constructors
+    public Account( String ownerName, double balance, double limit ) {
+        this.ownerName = ownerName;
+        this.balance = balance;
+        this.limit = limit;
+        amountOfAccounts++;
+        this.accountNumber = amountOfAccounts;
+    }
+
+    public Account( String ownerName ) {
+        this(ownerName, 0, 0);
+    }
+
+    // Methods
     public void deposit( double amount ) {
         setBalance(balance + amount);
     }
@@ -18,7 +33,7 @@ public class Account {
 
     public boolean transfer( Account destination, double amount ) {
         if( withdrawal(amount) ) {
-            destination.setBalance(balance + amount);
+            destination.deposit(amount);
             return true;
         }
         return false;
@@ -65,18 +80,8 @@ public class Account {
     
 
     public static void main(String[] args) {
-        Account account1 = new Account();
-        Account account2 = new Account();
-
-        account1.setAccountNumber(1234);
-        account1.setOwnerName("Maria Joaquina");
-        account1.setBalance(200);
-        account1.setLimit(500);
-
-        account2.setAccountNumber(777);
-        account2.setOwnerName("Daniel Molo");
-        account2.setBalance(99999);
-        account2.setLimit(99999);
+        Account account1 = new Account( "Maria Joaquina", 200, 500 );
+        Account account2 = new Account( "Daniel Molo", 99999, 99999 );
 
         account1.printsData();
         System.out.println();
