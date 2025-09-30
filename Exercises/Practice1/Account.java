@@ -1,6 +1,3 @@
-
-
-
 public class Account {
     private int accountNumber;
     private String ownerName;
@@ -8,12 +5,12 @@ public class Account {
     private double limit;
 
     public void deposit( double amount ) {
-        this.balance = this.balance + amount;
+        setBalance(balance + amount);
     }
 
     public boolean withdrawal( double amount ) {
         if( amount <= ( balance + limit ) ) {
-            balance = balance - amount;
+            setBalance(balance - amount);
             return true;
         }
         return false;
@@ -21,17 +18,21 @@ public class Account {
 
     public boolean transfer( Account destination, double amount ) {
         if( withdrawal(amount) ) {
-            destination.balance = destination.balance + amount;
+            destination.setBalance(balance + amount);
             return true;
         }
         return false;
     }
 
     public void printsData() {
-        System.out.println( "Account number: " + accountNumber );
+        System.out.println( "Account number: " + getAccountNumber() );
         System.out.println( "Account owner: " + getOwnerName() );
         System.out.println( "Account balance: " + getBalance() );
-        System.out.println( "Account limit: " + limit );
+        System.out.println( "Account limit: " + getLimit() );
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
     public String getOwnerName() {
@@ -40,6 +41,10 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+
+    public double getLimit() {
+        return limit;
     }
 
     public void setAccountNumber( int accountNumber ) {
