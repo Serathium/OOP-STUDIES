@@ -15,9 +15,8 @@ public class Account {
         if( amount <= ( balance + limit ) ) {
             balance = balance - amount;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean transfer( Account destination, double amount ) {
