@@ -20,13 +20,12 @@ public class Account {
         }
     }
 
-    public void transfer( Account destination, double amount ) {
-        if( balance >= amount ) {
-            balance = balance - amount;
+    public boolean transfer( Account destination, double amount ) {
+        if( withdrawal(amount) ) {
             destination.balance = destination.balance + amount;
-        } else {
-            
+            return true;
         }
+        return false;
     }
 
     public void printsData() {
